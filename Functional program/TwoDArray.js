@@ -1,6 +1,15 @@
+/**
+ * purpose     :  Take input in 2dimensional array and print them.
+ *                
+ * @description
+ * @file       :  TwoDArray.js
+ * @author     :  Sachin chouksey
+ * @version    :  1.0
+ * @since      :  24-12-18
+ * 
+ */
 var utility=require('../Functional program/Utility');
-var arr=[];
-var i=0;
-var rl=utility.input();
-var crr=utility.inputArray(arr,i,5,rl);
- console.log("crr",crr);
+function twoDArray(){
+    utility.TwoDArray();//calling of TwoDArray() method.
+}
+twoDArray();
