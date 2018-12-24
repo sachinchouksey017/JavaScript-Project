@@ -13,10 +13,9 @@ var rl=utility.input();
 function stringRep() {
     
 
-rl.question('enter the string', (ans) => {
+rl.question('enter the string', (ans) => {//take user input 
 var ss;
-ss=utility.stringPermutation("",ans,0,ans.length-1);
-console.log(ss);
+ss=utility.stringPermutation("",ans,0,ans.length-1);//calling of stringPermutation method.
 rl.close();
 });
 }
