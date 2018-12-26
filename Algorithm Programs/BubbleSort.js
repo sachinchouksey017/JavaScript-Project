@@ -4,7 +4,7 @@ function  bubble() {
 var arr=utility.insertArray();
 var brr;
 brr=utility.bubbleSort(arr);
-console.log("the sorted array is ");
+console.log("The sorted array is ");
 console.log(brr);
 }
 bubble();

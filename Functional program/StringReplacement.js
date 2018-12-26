@@ -12,7 +12,10 @@ var utility=require('../Functional program/Utility');
  var rl=utility.input();//calling of input method
 
  function stringReplace() {
-  rl.question('enter your name? ', (answer) => {//user input.
+  rl.question('Enter your name? ', (answer) => {//user input.
+    if(answer>=0)
+    console.log("Enter correct input");
+    else
     utility.hello(answer);//calling of hello method.
     rl.close();
   });

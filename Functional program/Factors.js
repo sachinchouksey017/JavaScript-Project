@@ -11,7 +11,7 @@
 var utility=require('../Functional program/Utility');
 var rl=utility.input();
 function factors() {
-    rl.question('enter the number to find factors? ',(Number) => {//userinput for factors.
+    rl.question('Enter the number to find factors? ',(Number) => {//userinput for factors.
       utility.factor(Number);//calling of factor method.
       rl.close();
     });

@@ -11,8 +11,11 @@
 var utility=require('../Functional program/Utility');
 var rl=utility.input();//calling of input method.
 function flipcoin() {
-    rl.question('how many time you want to flip the coin? ', (answer) => {//user input.
+    rl.question('How many time you want to flip the coin? ', (answer) => {//user input.
+        if(answer>=0)
         utility.flipcoin(answer);// calling of flipCoin method.
+        else
+        console.log("Please enter correct input ");
         rl.close();
       });
 }

@@ -12,7 +12,10 @@
 var utility=require('../Functional program/Utility');
 function powerOf2() {
     var number=+process.argv[2];//input from command line argument.
+    if(number>=0)
     utility.powerOf2(number);// calling of powerOf2 method.    
+    else
+    console.log("Please enter correct input through command line argument");
 }
 powerOf2();
 

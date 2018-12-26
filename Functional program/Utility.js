@@ -6,10 +6,10 @@ module.exports = {
    * 
    */
   inputreadLineArray() {
-    var l = read.question("how many element you want enter in array");
+    var l = read.question("How many element you want enter in array");
     var arr = new Array(l);
 
-    console.log("enter " + l + " element in array");
+    console.log("Enter " + l + " element in array");
     for (let index = 0; index < l; index++) {
 
       arr[index] = Number(read.question(""));
@@ -35,9 +35,9 @@ module.exports = {
    */
   hello(userin) {
     if (userin.length >= 3) {
-      console.log("hello " + userin + " how are you?");
+      console.log("Hello " + userin + " how are you?");
     } else {
-      console.log("please enter correct name")
+      console.log("Please enter correct name")
     }
 
   },
@@ -83,8 +83,8 @@ module.exports = {
     }
     var headPer = (head / noOfTimes) * 100;
     var tailPer = (tail / noOfTimes) * 100;
-    console.log("percentage of head occur is " + (headPer));
-    console.log("percentage of tail occur is " + (tailPer));
+    console.log("Percentage of head occur is " + (headPer));
+    console.log("Percentage of tail occur is " + (tailPer));
   },
   /*
      * @purpose : Taking input as a fourdigit number check whether the given number is a leap year
@@ -98,13 +98,13 @@ module.exports = {
    */
   leapYear(year) {
     if (year < 999 || year > 10000) {
-      console.log("enter 4 digit year number");
+      console.log("Enter 4 digit year number");
     } else {
 
       if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
-        console.log("year is leap year");
+        console.log("Year is leap year");
       } else {
-        console.log("year is not a leap year");
+        console.log("Year is not a leap year");
       }
     }
   },
@@ -129,14 +129,14 @@ module.exports = {
   powerOf2(userNo) {
     total = 1;
     if (userNo >= 0 && userNo < 31) {
-      console.log("table of 2 is ");
+      console.log("Table of 2 is ");
       while (userNo > 0) {
         total = total * 2;
         console.log(total);
         userNo--;
       }
     } else {
-      console.log("please input less than 31");
+      console.log("Please input less than 31");
     }
   },
   /*
@@ -154,9 +154,9 @@ module.exports = {
         sum = sum + 1 / index;
 
       }
-      console.log("harmonic number of " + number + " is " + sum);
+      console.log("Harmonic number of " + number + " is " + sum);
     } else {
-      console.log("please enter correct number")
+      console.log("Please enter correct number")
     }
   },
   /**
@@ -167,17 +167,17 @@ module.exports = {
   /* @description : Finding the primefactors of a given number */
   factor(number) {
     if (number > 0) {
-      if(number%2==0)
-      console.log("2 ");
+      if (number % 2 == 0)
+        console.log("2 ");
       while (number % 2 == 0) { //print the no. of 2's that divide number
-       // console.log("2 ");
+        // console.log("2 ");
         number = number / 2;
       }
       //number must be odd this point
       //
       for (let i = 3; i <= Math.sqrt(number); i = i + 2) {
-        if(number%i==0)
-        console.log(i);
+        if (number % i == 0)
+          console.log(i);
         while (number % i == 0) {//while i divide number print i and divide number.
           //console.log(i + " ");
           number = number / i;
@@ -188,7 +188,7 @@ module.exports = {
       }
 
     } else {
-      console.log("enter valid number");
+      console.log("Enter valid number");
     }
   },
   /*
@@ -215,15 +215,15 @@ module.exports = {
     }
     var winPercentage = (win / totaltime) * 100;//calculate percentage.
     var lossPercentage = 100 - winPercentage;
-    console.log("total number of win " + win);
-    console.log("win percentage " + winPercentage);
-    console.log("los percentage " + lossPercentage);
+    console.log("Total number of win " + win);
+    console.log("Win percentage " + winPercentage);
+    console.log("Loss percentage " + lossPercentage);
 
   },
 
   inputArray(arr, i, n, rl) {
     if (i < n) {
-      rl.question('enter number ', (ans) => {
+      rl.question('Enter number ', (ans) => {
         var input = Number(ans);
         arr.push(input);
         i++;
@@ -251,7 +251,7 @@ module.exports = {
       var distance = Math.sqrt((num1 * num1) + (num2 * num2));//formula for euclidean.
       console.log("Euclidean distance is " + distance);
     } else {
-      console.log("provide input through command line argument");
+      console.log("Please provide correct input through command line argument");
     }
   },
   /**
@@ -307,11 +307,10 @@ module.exports = {
    */
   stopwatch(rl) {
     var start = 0, stop = 0;
-    var dt = new Date();
-    rl.question('press  1 to start timer', (ans) => {
+    rl.question('Press  1 to start timer', (ans) => {
 
       start = this.currentSecond();//set current seconds.
-      rl.question('press 2 to stop timer ', (ans1) => {
+      rl.question('Press 2 to stop timer ', (ans1) => {
 
         stop = this.currentSecond();//set current seconds.
         console.log("elapsed time is " + (stop - start) + " seconds");//print elapsed time.
@@ -334,15 +333,15 @@ module.exports = {
     } else if (delta > 0) {
       var root1 = (-b + (Math.sqrt(delta))) / 2 * a;
       var root2 = (-b - (Math.sqrt(delta))) / 2 * a;
-      console.log("first root " + root1);
-      console.log("second root " + root2);
+      console.log("First root " + root1);
+      console.log("Second root " + root2);
     } else if (delta < 0) {
       var root1 = -b / 2 * a;
       var root2 = (Math.sqrt(-delta)) / 2 * a;
-      console.log("first root : " + root1, "i", root2);
-      console.log("second root : " + root1, "-i", root2);
+      console.log("First root : " + root1, "i", root2);
+      console.log("Second root : " + root1, "-i", root2);
     } else {
-      console.log("invalid number");
+      console.log("Invalid number");
     }
 
   },
@@ -364,19 +363,21 @@ module.exports = {
    *                of time random method runs.
    * 
    */
-  coupan() {
+  coupan(l) {
 
-    console.log("how many coupan number you wants");
-    var l = read.question();
+
+
     var arr = new Array(l);
     var h = 0;
-    var c = 0;
+    var count = 0;
     var flag = true;
     while (l > 0) {
       flag = true;
       var n = Math.floor((Math.random() * 10000) + 1000);//geting randomNumber between 0 to Highest value;
-
-      c++;//counting of random number.
+      if (n > 9999) {
+        n = Math.floor(n / 10);
+      }
+      count++;//counting of random number.
       for (let index = 0; index < (h + 1) && flag; index++) {
         if (arr[index] == n) {
           flag = false;
@@ -392,17 +393,17 @@ module.exports = {
 
 
 
-    console.log("total number of random number needed to generate coupan number is " + c);
+    console.log("Total number of random number needed to generate coupan number is " + count);
 
   },
   /**
    * @description : for creating 2 dimensional array and taking input in it.and return the array.
    */
   input2DArray() {
-    var row = read.question("enter number of rows you want");
-    var col = read.question("enter number of coloumn you want");
+    var row = read.question("Enter number of rows you want");
+    var col = read.question("Enter number of coloumn you want");
     var arr = [];
-    console.log("enter the element in the array");
+    console.log("Enter the element in the array");
     for (let index = 0; index < row; index++) {
       arr.push([]);
       for (let j = 0; j < col; j++) {
@@ -543,24 +544,27 @@ module.exports = {
 
 
       while (flag) {//take user input .
-        console.log("enter index i,j");
+        console.log("enter index row,coloumn");
         var r = read.question("");
         var c = read.question("");
-        if (this.checkIndex(r, c, arr)) {//check for index is empty or not.if empty then set value else
-          //again take input of user.
-          arr[r][c] = 'x';
-          c1++;
-          flag = false;
-          this.display2dArray(arr);//display array again.
-          console.log("user c" + c1);
+        if (r < 3 && c < 3) {
+          if (this.checkIndex(r, c, arr)) {//check for index is empty or not.if empty then set value else
+            //again take input of user.
+            arr[r][c] = 'x';
+            c1++;
+            flag = false;
+            this.display2dArray(arr);//display array again.
+            console.log("User c" + c1);
+          } else {
+            console.log("Index is filled re input index");
+          }
         } else {
-          console.log("index is filled re input index");
+          console.log("Please enter correct row or coloumn index");
         }
-
       }
       flag = true;
       if (this.isMatch(arr)) {//for checking if row or coloumn match.
-        console.log("user win the match");
+        console.log("User win the match");
         user = false;
         flag = false;
         flag1 = false;
@@ -569,7 +573,7 @@ module.exports = {
       if (flag1 && c1 < 9) {
         console.log();
         console.log();
-        console.log("computer chance");
+        console.log("Computer chance");
 
       }
       while (flag && c1 < 9) {//taking input from computer using random method.
@@ -634,7 +638,7 @@ module.exports = {
       }
     }
 
-    console.log("total number of triplet is " + count);
+    console.log("Total number of triplet is " + count);
     for (let i = 0; i < index; i++) {
       console.log(brr[i]);  // for printing the triplets 
     }

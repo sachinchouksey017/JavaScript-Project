@@ -11,8 +11,11 @@
 var utility=require('../Functional program/Utility');
 var rl=utility.input();//calling of input method.
 function leapYear() {
-    rl.question('enter the year to check leap or not',(year)=>{//user input.
+    rl.question('Enter the year to check leap or not',(year)=>{//user input.
+      if(year>=0)
         utility.leapYear(year);// calling of leapYear method.
+        else
+        console.log("Please enter correct year");
         rl.close();
         });
 }

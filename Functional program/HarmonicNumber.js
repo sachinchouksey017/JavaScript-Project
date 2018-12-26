@@ -11,9 +11,12 @@
 var utility=require('../Functional program/Utility');
 var rl=utility.input();
 function harmonic() {
-    rl.question('please enter value for harmonic value ',(Number) => {//user input for harmonic
-       utility.harmonicNumber(Number);                                //value.
-       rl.close();
+    rl.question('Please enter value for harmonic value ',(Number) => {//user input for harmonic
+      if(Number>=0)
+        utility.harmonicNumber(Number); 
+        else                               //value.
+          console.log("Please enter correct input");
+        rl.close();
     });
 }
 harmonic();
