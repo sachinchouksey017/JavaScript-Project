@@ -6,7 +6,17 @@ insertArray(){
     var n=read.question();
     console.log("insert " +n +"elements");
     for (let index = 0; index < n; index++) {
-        arr[index]=read.question();
+        arr[index]=Number(read.question());
+    }
+    return arr;
+},
+insertArrayString(){
+    var arr=[];
+    console.log("how many element you want to insert");
+    var n=read.question();
+    console.log("insert " +n +" elements");
+    for (let index = 0; index < n; index++) {
+        arr[index]=(read.question());
     }
     return arr;
 },
@@ -90,20 +100,6 @@ isAnagramPalimdrome(){
     }
 },
 
-binarySearch(arr,firstIndex,lastIndex,ele){
-    if(firstIndex>lastIndex){
-        return -1;                                                              ``
-    }
-    var mid=Math.floor((firstIndex+lastIndex)/2);
-    console.log(mid);
-    if(arr[mid]==ele){
-        console.log(mid)
-        return mid;
-    }else if(arr[mid]<ele)
-    this.binarySearch(arr,mid+1,lastIndex,ele);
-    else
-    this.binarySearch(arr,firstIndex,mid-1,ele);
-},
 vendingMachineRecursion(rupay,i,notes) {
 	var arr= [1000,500,100,50,10,5,2,1];
 	if(rupay==0&&i==arr.length) {
@@ -200,5 +196,149 @@ vendingMachineRecursion(rupay,i,notes) {
      }
      return sum;
  },
+
+ binarySearch(arr,ele)
+{
+    var first=0,last=arr.length-1;
+    while(first<=last){
+        mid=Math.floor((first+last)/2);
+        if(arr[mid]==ele){
+            return mid;
+        }else if(arr[mid]>ele){
+            last=mid-1;
+        }else{
+            first=mid+1;
+        }
+    }
+    return -1;
+},
+insertionSort(arr){
+    n=arr.length;
+    var ele;
+    for (let i = 1; i < n; i++) {
+        ele=arr[i];
+        var j=i-1;
+        while(j>=0&& arr[j]>ele){
+            arr[j+1]=arr[j];
+            j=j-1;
+        }
+        arr[j+1]=ele;
+        
+    }
+    return arr;
+},
+bubbleSort(arr){
+    var temp;
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length; j++) {
+             if(arr[j]>arr[j+1]){
+                 temp=arr[j];
+                 arr[j]=arr[j+1];
+                 arr[j+1]=temp;
+             }
+            
+        }
+        
+    }
+    return arr;
+
+},
+getNanoSecTime() {
+    var hrTime = process.hrtime();
+    return hrTime[0] * 1000000000 + hrTime[1];
+  },
+elapsedTimeForMethod(){
+
+var start=0,stop=0;
+
+var arr=[11,66,1,55,9,78,65,87,43,56];
+start= this.getNanoSecTime();
+this.insertionSort(arr);
+stop=this.getNanoSecTime();
+var insertionSortTime=stop-start;
+console.log()
+
+var brr=[11,66,1,55,9,78,65,87,43,56];
+start= this.getNanoSecTime();
+this.bubbleSort(brr);
+stop=this.getNanoSecTime();
+var bubbleTime=stop-start;
+
+var crr=[11,66,1,55,9,78,65,87,43,56];
+start= this.getNanoSecTime();
+this.binarySearch(crr,55);
+stop=this.getNanoSecTime();
+var BinaryTime=stop-start;
+
+var arrString=["a","gh","b","z","mn"];
+start= this.getNanoSecTime();
+this.insertionSort(arrString);
+stop=this.getNanoSecTime();
+var insertionSortTimeString=stop-start;
+
+
+var brrString=["a","gh","b","z","mn"];
+start= this.getNanoSecTime();
+this.bubbleSort(brrString);
+stop=this.getNanoSecTime();
+var bubbleTimeString=stop-start;
+
+var crrString=["a","gh","b","z","mn"];
+start= this.getNanoSecTime();
+this.binarySearch(crrString,"gh");
+stop=this.getNanoSecTime();
+var binaryTimeString=stop-start;
+
+var masterList=[{type : "insertion sort ",time: insertionSortTime},{type: "bubble Sort",time : bubbleTime},
+{type:"binary search",time:BinaryTime},{type :"insertion Sort String ",time:insertionSortTimeString},
+  {type:"bubble sort String ",time : bubbleTimeString},{type:"binary search String",time:binaryTimeString}];
+    masterList.sort(function(a, b){return b.time - a.time});
+    
+    console.log("the time in descending order is ");
+    console.log("time for "+masterList[0].type+" is "+masterList[0].time);
+    console.log("time for "+masterList[1].type+" is "+masterList[1].time);
+    console.log("time for "+masterList[2].type+" is "+masterList[2].time);
+    console.log("time for "+masterList[3].type+" is "+masterList[3].time);
+    console.log("time for "+masterList[4].type+" is "+masterList[4].time);
+    console.log("time for "+masterList[5].type+" is "+masterList[5].time);
+    
+
+},
+findNumber(number){
+
+    var n=0;
+    n = Math.sqrt(number,2);
+    
+    console.log("think a number between 0 to "+ number);
+    var low=0;
+    high=number-1;
+    var flag=true;
+    for (let index = 0; index <=n&&flag; index++) {
+        mid=Math.floor((low+high)/2);
+      if(low>=high){
+          flag=false;
+      }else{
+    var ans=read.question("Is your number is less than or equals to "+mid+" enter true or false");
+    if(ans=='true'){
+         high=mid;
+    }else if(ans=='false'){
+        low=mid+1;
+
+
+    }else{
+        console.log("please enter yes or No only");
+        index--;
+    }
+    
+}
+    }
+    console.log("your number is "+mid);
+},
+merge(arr,brr){
+    var i=0,j=0;
+    while(i<arr.length&&j<brr.length){
+        
+    }
+}
 
 }
