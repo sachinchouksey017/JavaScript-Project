@@ -1,4 +1,4 @@
-
+var dis=require('util');
 var fileStream = require('fs');
 var read = require('readline-sync');
 var linked = require('../DataStructurePrograms/LinkedList');
@@ -46,6 +46,7 @@ module.exports = {
         } else {
             console.log("please enter correct number");
         }
+
 
     },
 
@@ -125,7 +126,7 @@ module.exports = {
 
    },
  factorial(n){
-     sum=1;
+    let sum=1;
      while(n>0){
          sum=sum*n;
          n--;
@@ -139,11 +140,57 @@ module.exports = {
        var arr=[];
        console.log("Enter the Number of Nodes you want for each test cases");
        for (let i = 0; i < testCases; i++) {
-           array[i]=read.question('');
-       }
+           arr[i]=read.question('');
+       }var numinator,denominator,num1,num2;
        for (let i = 0; i < testCases; i++) {
-           
+           numinator=this.factorial(2*arr[i]);
+           denominator=(this.factorial(Number(arr[i])+1)*this.factorial(arr[i]));
+           console.log("Total number of Binary search Tree generated through "+arr[i]," Nodes is ");
+           console.log(Math.floor(numinator/denominator));
            
        }
+   },
+
+   calender(month,year){
+   var utility=require('../Algorithm Programs/Utility');
+   var String=["SU","M","T","W","Th","F","S"];
+   var montharr=["","Jan","Feb","March","April","May","Jun","July","Augest","Sept","Oct","Nov","Dec"];
+    var d=utility.dayOfWeek(1,month,year);
+     var dayarr=[0,31,28,31,30,31,30,31,31,30,31,30,31];
+     if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0){
+         dayarr[2]=29;
+     }
+     
+     console.log("   "+montharr[month]+"  "+year);
+
+console.log(" SUN MON TUE WED THU FRI SAT ");
+
+for (let j = 0; j < (d*4+2); j++) {
+    dis.print(" ");
+  
+}
+
+
+var n=dayarr[month];
+for (let i = 1; i <=n; i++) {
+    if(i<10)
+      dis.print(i,"   ");
+     else{
+       dis.print(i,"  ");
+     }
+     
+      if((d+i)%7==0){
+        console.log();
+        // for (let j = 0; j < (d*4+2); j++) {
+        //     dis.print(" ");
+          
+        // }
+          
+          dis.print("  ");
+      }
+}
+console.log("\n\n");
+
    }
+
 }
