@@ -86,6 +86,10 @@ class LinkedList{
             console.log("No element present in the list");
             return null;
         }
+        if(this.head.next==null){
+            this.head=null;
+            return;
+        }
         var curr=this.head;
         var pre=this.head;
         while(curr.next != null){
@@ -228,6 +232,22 @@ class LinkedList{
             curr=curr.next;
         }
         console.log(str);
+        return str;
+
+
+
+    }
+    getData(){
+        var curr=this.head;
+        var str="";
+        while(curr){
+            str=str+curr.element;
+            if(curr.next!=null){
+                str=str+" ";
+            }
+            curr=curr.next;
+        }
+        return str;
     }
     
 }

@@ -7,6 +7,16 @@ var read = require('readline-sync');
 var linked = require('../DataStructurePrograms/LinkedList');
 var stak = require('../DataStructurePrograms/StackUsingLinkedList');
 module.exports = {
+    writeFile(fileName,data){
+        const fs = require('fs');
+fs.writeFile(fileName, data, function(err) {
+    if(err) {
+        return console.log(err);
+    }
+
+    console.log("The file was saved!");
+}); 
+    },
     unOrdered() {
         var f = fileStream.readFileSync('String.txt', 'utf8');
 
@@ -24,11 +34,14 @@ module.exports = {
         } else {
             ll.add(word);
         }
+        var str=ll.getData();
+        this.writeFile('String.txt',str);
         ll.display();
 
     },
     ordered() {
         var string = fileStream.readFileSync('number.txt', 'utf8');
+        
         var arr = string.split(' ');
         var ll = new linked.LinkedList;
         for (let index = 0; index < arr.length; index++) {
@@ -41,12 +54,17 @@ module.exports = {
         if (num >= 0) {
             if (ll.search(num)) {
                 ll.remove(num);
+
             } else {
                 ll.add(num);
                 ll.addAscending();
+              
             }
+            var str=ll.getData();
+            this.writeFile('number.txt',str);
             console.log("The linked list elements are ");
             ll.display();
+          
         } else {
             console.log("please enter correct number");
         }
