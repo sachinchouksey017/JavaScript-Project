@@ -24,6 +24,8 @@ module.exports = {
         return arr;
     },
     isAnagram(string1, string2) {
+        string1=string1+"";
+        string2=string2+"";
         if (string1.length != string2.length) {
             return false;
         }
@@ -90,16 +92,41 @@ module.exports = {
         return false;
     },
 
+     isPalimdrome2String(num1,num2){
+        var str="";
+        num1=num1+"";
+        num2=num2+"";
 
+        for (let i = 0; i < num1.length; i++) {
+            str=num1.charAt(i)+str;
+        }
+        if(str==num2){
+            return true;
+        }
+        return false;
+     },
 
 
     isAnagramPalimdrome() {
+        var arr=[];
         for (let index = 0; index < 1000; index++) {
             if (this.isPrime(index)) {
-                if (this.isPalimdrome(index + ""))
-                    console.log(index);
+                arr.push(index);
             }
 
+        }
+        
+        for (let i = 0; i < arr.length; i++) {
+              for (let j = i+1; j < arr.length; j++) {
+                  if(this.isAnagram(arr[i],arr[j])){
+                    if(this.isPalimdrome2String(arr[i],arr[j]))
+                          console.log(arr[i],"  ",arr[j]);
+                      }   
+                  
+                  
+              }
+            
+            
         }
     },
 

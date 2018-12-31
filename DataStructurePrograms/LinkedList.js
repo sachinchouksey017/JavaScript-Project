@@ -165,7 +165,18 @@ class LinkedList{
         return this.size;
     }
 
-
+   displayQueue(){
+    var curr=this.head;
+    var str="";
+    while(curr){
+        str=str+curr.element+" ";
+        if(curr.next!=null){
+            str=str+" ";
+        }
+        curr=curr.next;
+    }
+    return str;
+   }
    addAscending(){
        var main=this.head;
          var mainHead=null;
