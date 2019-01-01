@@ -17,41 +17,68 @@ fs.writeFile(fileName, data, function(err) {
     console.log("The file was saved!");
 }); 
     },
+
+/**
+*   purpose   :Read the Text from a file, split it into words and arrange it as Linked List.
+*              Take a user input to search a Word in the List. If the Word is not found then add it
+*              to the list, and if it found then remove the word from the List. In the end save the
+*              list into a file
+*/
+/*
+ *  @descriptipn: Take User input to search the word and save the file after update
+ *  @function:
+ */
     unOrdered() {
-        var f = fileStream.readFileSync('String.txt', 'utf8');
+        var f = fileStream.readFileSync('String.txt', 'utf8');//create string of file data.
 
         console.log(f);
         var arr = f.split(' ');
 
 
-        var ll = new linked.LinkedList;
+        var ll = new linked.LinkedList;// creating of linked list object.
         for (let index = 0; index < arr.length; index++) {
-            ll.add(arr[index]);
+            ll.add(arr[index]);// add the word to linked list.
         }
         var word = read.question('Enter the word to search in list ');
-        if (ll.search(word)) {
+        if(isNaN(word)){
+        if (ll.search(word)) {//searching the word to linked list
             ll.remove(word);
         } else {
             ll.add(word);
         }
-        var str=ll.getData();
-        this.writeFile('String.txt',str);
+        var str=ll.getData();//get linked list data to string.
+        console.log("After updating the List ");
+       this.writeFile('String.txt',str);//for write the data to file
         ll.display();
+    }else{
+        console.log("Wrong input");
+    }
 
     },
+
+/**
+*   purpose   :­ Read a List of Numbers from a file and arrange it ascending Order in a Linked List.
+*               Take user input for a number, if found then pop the number out of the list
+*               else insert the number in appropriate position
+*/
+/*
+ *  @descriptipn: Take User input to search the Number and save the file after update
+ *  @function:
+ */
     ordered() {
-        var string = fileStream.readFileSync('number.txt', 'utf8');
-        
-        var arr = string.split(' ');
-        var ll = new linked.LinkedList;
+        var string = fileStream.readFileSync('number.txt', 'utf8');//taking file data in form of string.
+    
+        var arr = string.split(' ');//split string in the array.
+        console.log(arr);
+        var ll = new linked.LinkedList;//creating linked list object.
         for (let index = 0; index < arr.length; index++) {
-            ll.add(Number(arr[index]));
+            ll.add(Number(arr[index]));//add words to linked list.
 
         }
-        ll.addAscending();
-        ll.display();
+        ll.addAscending();//arrange linked list in ascending order
+        ll.display();//display linked list.
         var num = read.question("Enter the Number you want to search ");
-        if (num >= 0) {
+        if (!isNaN(num)) {//check it is number or not.
             if (ll.search(num)) {
                 ll.remove(num);
 
@@ -72,10 +99,20 @@ fs.writeFile(fileName, data, function(err) {
 
     },
 
+    /**
+    * purpose     :Take an Arithmetic Expression where parentheses are used to order the performance
+    *              of operations. Ensure parentheses must appear in a balanced fashion.
+    * @description
+    * @author     :  Sachin chouksey
+    * @version    :  1.0
+    * @since      :  28-12-18
+    * @returns    :  boolean value
+    */
+
     balancedExpression() {
         var stk = require('../DataStructurePrograms/Stack');
         var stak = new stk.Stack;
-        var string = read.question("Enter the arthmetic expression equation ");
+        var string = read.question("Enter the arthmetic expression equation ");//user input
         var ch, popch;
         for (let index = 0; index < string.length; index++) {
             ch = string.charAt(index);
@@ -104,28 +141,39 @@ fs.writeFile(fileName, data, function(err) {
             }
 
         }
-if(stak.size!=0){
-    return false;
-}
+        if (stak.size != 0) {
+            return false;
+        }
         return true;
 
 
 
     },
-
+/**
+ * purpose     : Program which creates Banking Cash Counter where people come in to deposit Cash and 
+ *               withdraw Cash. Have an input panel to add people to Queue to either deposit or withdraw
+ *               money and dequeue the people. Maintain the Cash Balance.
+ * @description
+ * @param      :Nothing
+ * @returns    :boolean value.
+ * 
+ */
     bankingCash() {
-        let bankbalance = 100000000;
+        let bankbalance = 100000000;//initialise the bank amount.
         let startingbankbalance = bankbalance;
         var que = require('../DataStructurePrograms/Queue');
-        var line = new que.Queue;
+        var line = new que.Queue;//creating queue object.
         var amount;
         var flag = false;
         var people = read.question("How many person are in the Queue ");
+        if(isNaN(people)){
+            return -1;
+        }
         for (let i = 0; i < people; i++) {
             var what = read.question("What you want \n For Deposit : press 1 \n For Withdraw : press 2 \n");
             if (what == 1) {
                 amount = Number(read.question("Enter the amount you want to deposit "));
-                line.enqueue(amount);
+                line.enqueue(amount);//enqueue the people in queue.
                 flag = true;
             } else if (what == 2) {
                 amount = Number(read.question("Enter the amount you want to Withdraw "));
@@ -146,9 +194,15 @@ if(stak.size!=0){
         if (startingbankbalance == bankbalance)
             return true;
         return false;
+   
 
 
     },
+    /**
+     * @description    : to calculate factorial of a number.
+     * @param {Integer} n 
+     * @returns        : integer
+     */
     factorial(n) {
         let sum = 1;
         while (n > 0) {
