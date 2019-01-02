@@ -80,7 +80,15 @@ display(){
     console.log(str);
 }
 
+reveseStack(stk){
+    var newstack=new StackLinkedList;
+    var n=this.give_size();
+    for (let index = 0; index < n;index++) {
+        newstack.push(this.pop());
+    }
+    return newstack;
 
+}
 
 displayAnagram(){
     var curr=this.head;

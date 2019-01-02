@@ -1,11 +1,11 @@
 /**
- * purpose     :  By using random function flip the coin no of times from user input
- *            and print the percentage of head vs tails.
+ * purpose     : A program for find how many different binary search tree can be created 
+ *               using number of nodes .
  * @description
- * @file       :  FlipCoin.js
+ * @file       :  BinarySearchTree.js
  * @author     :  Sachin chouksey
  * @version    :  1.0
- * @since      :  24-12-18
+ * @since      :  30-12-18
  * 
  */
 var utility=require('../DataStructurePrograms/Utility');

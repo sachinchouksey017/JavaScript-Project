@@ -42,9 +42,13 @@ for (let index = 0; index < 10; index++) {//for printing the item of hash functi
 
 }
 var number = read.question(' Enter the number you want to search \n');
-if(!isNaN(number)){
-remainder = number % 10;
-if (arr[remainder].search(number)) {
+if(!isNaN(number)){//for check it is number or not
+remainder = Number(number % 10);
+console.log(arr[1]);
+if (arr[remainder] === undefined) {//if array does not contain any item in it means it has undefined
+    arr[remainder] = new linked.LinkedList;//create a new linked list to that index add item.
+} 
+if (arr[remainder].search(Number(number))) {
     console.log("The number is found in file");
     arr[remainder].remove(number);
 
@@ -67,7 +71,7 @@ for (let index = 0; index < 10; index++) {
     }
 
 } console.log(str);
-utility.writeFile('hashingNumber.txt', str);
+utility.writeFile('hashingNumber.txt', str);//for saving the file.
 
 console.log("\n\n");
 }else{

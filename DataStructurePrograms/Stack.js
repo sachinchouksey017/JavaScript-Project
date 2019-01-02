@@ -5,7 +5,6 @@ class Stack{
         this.top=-1;
     }
     push(element){
-        
         this.top=this.top+1;
        this.arr[this.top]=element;
        this.size++;
