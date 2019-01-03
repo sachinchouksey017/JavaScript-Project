@@ -412,4 +412,9 @@ module.exports = {
         
     }
 
-}
+}// {"Rice":{
+//     "name":"rice",
+//     "price":"60",
+//     "weight":"10"
+// }
+// }
