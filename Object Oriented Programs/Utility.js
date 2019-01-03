@@ -51,10 +51,48 @@ stock(obj){
     var stk=obj.stock;
     console.log();
     for(var key in stk){
-        
+        console.log(stk[key]);
+        console.log("total value for "+stk[key].stockname+" is "+stk[key].No_of_shares*stk[key].share_price);
     }
-    console.log(stk[]);
-}
+    var total=0;
+    for(var key in stk){
+        total=parseInt(total)+parseInt(stk[key].No_of_shares*stk[key].share_price)
+    }
+    console.log("Total value for total shares is "+total);
+
+    //console.log(stk[]);
+},
+inventoryManage(noOfTimes){
+    var read=require('readline-sync');
+    var file=require('fs');
+    var filedata=file.readFileSync('inventorymanage.json','utf8');
+    object=JSON.parse(filedata);
+    for (let i = 0; i < noOfTimes; i++) {
+        var name=read.question("Enter the name of stock ");
+        var Noofshares=read.question("Enter how many shares you have ");
+        var shareprice=read.question(" Enter the price of your share ");
+        object.stock.push({
+            stockname :name,
+            No_of_shares:Noofshares,
+            share_price:shareprice
+        })
+        console.log(inventObject);
+           //user given input is writing into a file
+           fs.writeFileSync('inventManagement.json',JSON.stringify(inventObject));
+           var stock=inventObject.stock;
+           //for evary stock printing the total price
+           for(var key in stock)
+           {
+               //console.log(stock[key]);
+               console.log("The totalprice of stock is: "+stock[key].noofshares*stock[key].price);
+           }
+         }
+        
+
+    },
+        
+    
+
 
 
 
