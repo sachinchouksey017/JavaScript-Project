@@ -29,14 +29,17 @@
             "Name": "dr.Nagendra",
             "Specialization": "ABC",
             "Availability": "BOTH"
+        },
+        {
+            "Id": "D6",
+            "Name": "dr.Mohit",
+            "Specialization": "XYZ",
+            "Availability": "AM"
         }
     ],
     "Patient": [
         {
-            "Name": "Honey pandey",
-            "ID": "P1",
-            "MobileNumber": 8878257808,
-            "Age": 24
+            
         },
         {
             "Name": "Pandey ji",

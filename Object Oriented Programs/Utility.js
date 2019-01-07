@@ -261,13 +261,16 @@ module.exports = {
                 if (fix!=undefined) {
                     console.log("Your Appointment fix with " + drobject[key].Name+" on "+fix);
                     file.writeFileSync('Clinique.json', JSON.stringify(object));
+                    return this.clinique(object,file);
                 } else {
                     console.log("Your Appointment is not fix ");
+                    return this.clinique(object,file);
                 }
             }
         }
         if (flag) {
-            console.log("No Dr. Available search another doctor")
+            console.log("No Dr. Available search another doctor");
+            return this.drname(object,file);
         }
     },
     drId(object, file) {
@@ -285,13 +288,16 @@ module.exports = {
                 if (fix!=undefined) {
                     console.log("Your Appointment fix with " + drobject[key].Name+" on "+fix);
                     file.writeFileSync('Clinique.json', JSON.stringify(object));
+                    return this.clinique(object,file);
                 } else {
                     console.log("Your Appointment is not fix ");
+                    return this.clinique(object,file);
                 }
             }
         }
         if (flag) {
-            console.log("No Dr. Available search another doctor")
+            console.log("No Dr. Available search another doctor");
+            return this.clinique(object,file);
         }
     },
     drSpecialization(object, file) {
@@ -316,13 +322,16 @@ module.exports = {
                 if (fix!=undefined) {
                     console.log("Your Appointment fix with " + drobject[key].Name+" on "+fix);
                     file.writeFileSync('Clinique.json', JSON.stringify(object));
+                    return this.clinique(object,file);
                 } else {
                     console.log("Your Appointment is not fix ");
+                    return this.clinique(object,file);
                 }
             }
         }
         if (flag) {
-            console.log("No Dr. Available search another doctor")
+            console.log("No Dr. Available search another doctor");
+            return this.clinique(object,file);
         }
     },
     drAvail(object, file) {
@@ -435,6 +444,24 @@ module.exports = {
           }
           return id;
     },
+    checkIdPat(object){
+        var flag=true;
+        var id=read.question("Please Input Patient. Id ");
+        while(flag){ 
+        if(isNaN(id)){
+             flag=false;
+         }else
+         id=read.question("Wrong input !!!!Please Input correct Patient. Id ");
+        }
+          var patobject=object.Patient;
+          for(key in patobject){
+             if(patobject[key].ID==id){
+                 console.log(" This Id is already present ");
+                 return this.checkId(object);
+             }
+          }
+          return id;
+    },
     RegisterDr(object,file){
        var id=this.checkId(object);
     var name=read.question("Enter the Name of Doctor ");
@@ -478,7 +505,7 @@ module.exports = {
     });
     file.writeFileSync('Clinique.json',JSON.stringify(object));
     },
-    RegisterPatient(){
+    RegisterPatient(object){
         // "Name": "Honey pandey",
         // "ID": "P1",
         // "MobileNumber": 8878257808,
@@ -490,9 +517,33 @@ module.exports = {
                flag=false; 
             }else{
                 name=read.question("Wrong input !! Please input correct name ");
-    
             }
         }
+        var id=this.checkIdPat(object);
+        flag=true;
+        var mob=read.question(" Enter Patient Mobile Number ");
+        while(flag){
+            if(!isNaN(mob)&&mob.length==10){
+                flag=false;
+            }else{
+                mob=read.question("Wrong Number!! Please Enter correct Patient Mobile Number ");
+            }
+        }
+        flag=true;
+        var age=read.question("Please Enter Patient Age ");
+        while(flag){
+            if(!isNaN(age)&&age<110){
+                flag=false;
+            }else{
+                age=read.question("Wrong Input !!! Please Enter Correct Patient Age ");
+            }
+        }
+        object.Patient.push({
+            "Name": name,
+            "ID": id,
+            "MobileNumber":mob,
+            "Age": age
+        })
     },
     patname(object) {
         var patobject = object.Patient;
@@ -515,7 +566,8 @@ module.exports = {
             }
         }
         if (flag) {
-            console.log("No Patient Available search another Patient")
+            console.log("No Patient Available search another Patient");
+            
         }
     },
     patmob(object) {
@@ -554,56 +606,92 @@ module.exports = {
             }
         }
         if (flag) {
-            console.log("No Patient Available ")
+            console.log("No Patient Available ");
         }
     },
-    clinique(choice, object, file) {
+    showAllDr(object){
+        drobject=object.Doctor;
+        for(var Key in drobject){
+            console.log();
+            console.log(drobject[Key]);
+        }
+    },
+    clinique(object, file) {
+        var choice=read.question("What You want \n Press 1 for Search doctor \n Press 2 for Search patient \n press 3 for Register Doctor \n" 
+ +" Press 4 for Register Patient \n Press 5 for to Show All Doctor \n press 6 for Save File \n press 7 for Exit ");
         if (choice == 1) {
             var drchoice = Number(read.question("Search by : \n 1.Name \n 2.ID \n 3.Specialization \n 4.Availability \n 5.Exit "));
             switch (drchoice) {
                 case 1:
                     this.drname(object, file);
+                    
                     break;
                 case 2:
                     this.drId(object, file);
+                    
+
                     break;
                 case 3:
                     this.drSpecialization(object, file);
+                    
+
                     break;
                 case 4:
                     this.drAvail(object, file);
+                    
+
                     break;
                 case 5:
                     break;
                 default:
                     console.log("Wrong Choice ");
-                    return this.clinique(choice,object,file);
+                    return this.clinique(object,file);
             }
         } else if (choice == 2) {
             var patchoice = Number(read.question("Search by : \n 1.Name \n 2.Mobile Number \n 3.Id  \n 4.Exit "));
             switch (patchoice) {
                 case 1:
                     this.patname(object);
-                    break;
+                    return this.clinique(object,file);
+                    
                 case 2:
                     this.patmob(object);
-                    break;
+                    return this.clinique(object,file);
+                    
                 case 3:
                     this.patId(object);
-                    break;
+                    return this.clinique(object,file);
+                    
                 case 4:
                     break;
                 default:
                     console.log("Wrong Choice !!!");
-                return this.clinique(choice,object,file);
+                return this.clinique(object,file);
                     
             }
 
         }else if(choice==3){
+            this.RegisterDr(object,file);
+            this.clinique(object,file);
+
+        }else if(choice==4){
+             this.RegisterPatient(object);
+            this.clinique(object,file);
+
+        }else if(choice==5){
+             this.showAllDr(object);
+            this.clinique(object,file);
+
+        } else if(choice==6){
+            file.writeFileSync('Clinique.json',JSON.stringify(object));
+            console.log("File Saved Successfully ");
+            return this.clinique(object,file);
+        
+        }else if(choice==7){
             return;
         } else{
             choice=read.question("Wrong Input !!! \n What You want \n Press 1 for Search doctor \n Press 2 for Search patient \n press 3 for Exit ");
-            return this.clinique(choice,object,file);
+            return this.clinique(object,file);
         }
     }
 
