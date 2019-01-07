@@ -1,0 +1,123 @@
+{
+    "stock": [
+        {
+            "stockname": "Reliance",
+            "Symbol": "A",
+            "share_price": 15000
+        },
+        {
+            "stockname": "BridgeLabz",
+            "Symbol": "B",
+            "share_price": 72000
+        },
+        {
+            "stockname": "infosys",
+            "Symbol": "C",
+            "share_price": 200000
+        },
+        {
+            "stockname": "Tcs",
+            "Symbol": "D",
+            "share_price": 2000
+        },
+        {
+            "stockname": "feel",
+            "Symbol": "y",
+            "share_price": 0
+        }
+    ],
+    "A": [
+        {
+            "type": "Buy",
+            "time": 12.42,
+            "date": "5/1/19",
+            "amount": "1500"
+        },
+        {
+            "type": "Buy",
+            "time": "14:23",
+            "date": "5/0/2019",
+            "amount": "1000"
+        },
+        {
+            "type": "Buy",
+            "time": "14:30",
+            "date": "5/0/2019",
+            "amount": 14000
+        },
+        {
+            "type": "Buy",
+            "time": "14:34",
+            "date": "5/1/2019",
+            "amount": "1000"
+        },
+        {
+            "type": "Sell",
+            "time": "14:40",
+            "date": "5/1/2019",
+            "amount": "1000"
+        },
+        {
+            "type": "Buy",
+            "time": "14:56",
+            "date": "5/1/2019",
+            "amount": "1000"
+        },
+        {
+            "type": "Sell",
+            "time": "14:57",
+            "date": "5/1/2019",
+            "amount": "1000"
+        },
+        {
+            "type": "Buy",
+            "time": "15:45",
+            "date": "5/1/2019",
+            "amount": "1000"
+        }
+    ],
+    "B": [
+        {
+            "type": "sell",
+            "time": 12.42,
+            "date": "5/1/19",
+            "amount": "1500"
+        },
+        {
+            "type": "Buy",
+            "time": "14:58",
+            "date": "5/1/2019",
+            "amount": "2000"
+        }
+    ],
+    "C": [
+        {
+            "type": "Buy",
+            "time": 12.42,
+            "date": "5/1/19",
+            "amount": "1500"
+        }
+    ],
+    "D": [
+        {
+            "type": "Buy",
+            "time": 12.42,
+            "date": "5/1/19",
+            "amount": "1500"
+        }
+    ],
+    "y": [
+        {
+            "type": "Buy",
+            "time": "16:0",
+            "date": "5/1/2019",
+            "amount": "1000"
+        },
+        {
+            "type": "Sell",
+            "time": "16:0",
+            "date": "5/1/2019",
+            "amount": "1000"
+        }
+    ]
+}

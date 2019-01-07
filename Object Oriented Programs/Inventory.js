@@ -10,11 +10,18 @@
  * @since      :  3-01-19
  * 
  */
-var utility=require('../Object Oriented Programs/Utility');
-var fs=require('fs');
-var data=fs.readFileSync('file.json');
-var object=JSON.parse(data);//for converting string to json object.
+var utility = require('../Object Oriented Programs/Utility');
+var fs = require('fs');
+var flag = true;
+try {
+    var data = fs.readFileSync('file.json');
+    var object = JSON.parse(data);//for converting java script object notation string into an object.
+} catch (err) {
+    console.log("File not found !! Please check file is present or not ");
+    flag = false;
+}
 function mainInventory() {
-    utility.inventory(object);
+    if (flag)
+        utility.inventory(object);
 }
 mainInventory();

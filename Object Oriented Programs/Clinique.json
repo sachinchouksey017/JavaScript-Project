@@ -1,0 +1,51 @@
+{
+    "Doctor" : [{
+          "Id":"D1",
+          "Name":"dr.Ansari",
+          "Specialization":"Neurologist",
+          "Availability":"Both"
+          
+    },{
+        "Id":"D2",
+        "Name":"dr.Akshay",
+        "Specialization":"Psychiatrist",
+        "Availability":"Both"
+
+    },{
+        "Id":"D3",
+        "Name":"dr.Mohit Kumar",
+        "Specialization":"Pediatrician",
+        "Availability":"PM"
+
+    },{
+        "Id":"D4",
+        "Name":"dr.Sandeep Kumar",
+        "Specialization":"Neurologist",
+        "Availability":"AM"
+
+    }],
+
+    "Patient":[{
+        "Name":"Honey pandey",
+         "ID":"P1", 
+         "MobileNumber":8878257808,
+         "Age":24
+    },
+    {
+        "Name":"Pandey ji",
+         "ID":"P2", 
+         "MobileNumber":9872257408,
+         "Age":48
+    },{
+        "Name":"Ashok Kumar",
+         "ID":"P3", 
+         "MobileNumber":9893345623,
+         "Age":60
+    },{
+        "Name":"aslam",
+         "ID":"P4", 
+         "MobileNumber":9994534214,
+         "Age":45
+    }
+]
+}

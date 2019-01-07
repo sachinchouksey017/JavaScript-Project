@@ -83,7 +83,61 @@ displayAnagram(){
     }
 
 }
+addAscending(){
+    var main=this.head;
+      var mainHead=null;
+    while(main){
+     var n=new Node(main.element);
+     var flag=true;
+     if(mainHead==null){
+       
+         mainHead=n;
+      this.head=mainHead;
 
+     }else{
+         var pre=mainHead,curr=mainHead;
+         if(curr.next==null){
+             if(n.element<curr.element){
+                 n.next=curr;
+                 mainHead=n;
+                 flag=false;
+             }
+         }
+         while(curr&&flag){
+           if(n.element<curr.element){
+               pre.next=n;
+               n.next=curr;
+               flag=false;
+           }
+
+             pre=curr;
+             curr=curr.next;
+         }
+         if(flag){
+             pre.next=n;
+         }
+     }
+     
+        main=main.next;
+
+    }
+    return this.head=mainHead;
+}
+getData(){
+    var curr=this.head;
+    var str="";
+    while(curr){
+        str=str+curr.element;
+        if(curr.next!=null){
+            str=str+" ";
+        }
+        curr=curr.next;
+    }
+    return str;
+}
+makeBlank(){
+    this.head=null;
+}
 
 
 }
