@@ -3,7 +3,7 @@
         {
             "stockname": "Reliance",
             "Symbol": "A",
-            "share_price": 15000
+            "share_price": 14000
         },
         {
             "stockname": "BridgeLabz",
@@ -73,6 +73,12 @@
             "type": "Buy",
             "time": "15:45",
             "date": "5/1/2019",
+            "amount": "1000"
+        },
+        {
+            "type": "Sell",
+            "time": "9:35",
+            "date": "7/1/2019",
             "amount": "1000"
         }
     ],

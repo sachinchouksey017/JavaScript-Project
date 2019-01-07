@@ -21,8 +21,8 @@ class StockAccount {//class for stock Account
             this.stk = this.obj.stock;
             this.timedata = file.readFileSync('stockTime.json', 'utf8');//read the file 
             this.time=JSON.parse(this.timedata)
-            this.llshare=new linked.LinkedList();
-            this.llshare.add()
+            //this.llshare=new linked.LinkedList();
+           // this.llshare.add()
 
         } catch (err) {
             console.log("file Not found please check your file ");
@@ -71,7 +71,7 @@ class StockAccount {//class for stock Account
             this.Datepush(symbol,shareprice,"Buy");
 
         }
-    this.llshare.add(shareprice);
+    //this.llshare.add(shareprice);
         
         //for printing the object.
         for (var key in this.stk) {
@@ -139,7 +139,7 @@ class StockAccount {//class for stock Account
             this.stk[key].share_price = price-shareprice;
             console.log("After selling ");
             this.Datepush(symbol,shareprice,"Sell");
-            this.llshare.p
+            
             for (var key in this.stk) {
                 console.log(this.stk[key]);
             }
