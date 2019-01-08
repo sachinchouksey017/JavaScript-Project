@@ -3,7 +3,7 @@ var st = new stk.StockAccount('stockaccount.json');
 var read=require('readline-sync');
 var val,flag1=true;
 while(flag1){
-console.log("What you want \n For Buy the Stock press 1 \n For Shell the Stock press 2 ");
+console.log("What you want \n For Buy the Stock press 1 \n For Sell the Stock press 2 ");
 val = read.question(" For ValueOf press 3 \n For Show Report press 4 \n For Save Report press 5 \n Exit press 6 ");
 switch (Number(val)) {
     case 1:

@@ -3,7 +3,7 @@
         {
             "stockname": "Reliance",
             "Symbol": "A",
-            "share_price": 14000
+            "share_price": 15000
         },
         {
             "stockname": "BridgeLabz",
@@ -24,6 +24,16 @@
             "stockname": "feel",
             "Symbol": "y",
             "share_price": 0
+        },
+        {
+            "stockname": "Honeywell",
+            "Symbol": "K",
+            "share_price": "1000"
+        },
+        {
+            "stockname": "abc",
+            "Symbol": "Z",
+            "share_price": "1000"
         }
     ],
     "A": [
@@ -37,48 +47,6 @@
             "type": "Buy",
             "time": "14:23",
             "date": "5/0/2019",
-            "amount": "1000"
-        },
-        {
-            "type": "Buy",
-            "time": "14:30",
-            "date": "5/0/2019",
-            "amount": 14000
-        },
-        {
-            "type": "Buy",
-            "time": "14:34",
-            "date": "5/1/2019",
-            "amount": "1000"
-        },
-        {
-            "type": "Sell",
-            "time": "14:40",
-            "date": "5/1/2019",
-            "amount": "1000"
-        },
-        {
-            "type": "Buy",
-            "time": "14:56",
-            "date": "5/1/2019",
-            "amount": "1000"
-        },
-        {
-            "type": "Sell",
-            "time": "14:57",
-            "date": "5/1/2019",
-            "amount": "1000"
-        },
-        {
-            "type": "Buy",
-            "time": "15:45",
-            "date": "5/1/2019",
-            "amount": "1000"
-        },
-        {
-            "type": "Sell",
-            "time": "9:35",
-            "date": "7/1/2019",
             "amount": "1000"
         }
     ],
@@ -123,6 +91,22 @@
             "type": "Sell",
             "time": "16:0",
             "date": "5/1/2019",
+            "amount": "1000"
+        }
+    ],
+    "K": [
+        {
+            "type": "Buy",
+            "time": "15:38",
+            "date": "8/1/2019",
+            "amount": "1000"
+        }
+    ],
+    "Z": [
+        {
+            "type": "Buy",
+            "time": "18:38",
+            "date": "8/1/2019",
             "amount": "1000"
         }
     ]

@@ -14,7 +14,15 @@
  */
 
 var utility=require('../Object Oriented Programs/Utility');
+var file=require('fs');
+
 function manage() {
-    utility.inventoryManage();//call inventoryMangage method
+    try {
+        var filedata = file.readFileSync('inventorymanage.json', 'utf8');
+        var object =JSON.parse(filedata);
+    } catch (err) {
+        console.log("error found!!!");
+    }
+    utility.inventoryManage(object,file);//call inventoryMangage method
 }
 manage();
