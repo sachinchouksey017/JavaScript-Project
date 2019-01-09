@@ -284,7 +284,7 @@ module.exports = {
                 return this.inventoryManage(object, file);
         }
 
-
+        
     },
     /**
      * purpose: a method which returns all the card in mixing form. 
