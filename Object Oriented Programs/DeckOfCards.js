@@ -13,4 +13,4 @@
  * 
  */
 var utility=require('../Object Oriented Programs/Utility');
-utility.deck();
+utility.deck();//calling deck method.

@@ -1,3 +1,6 @@
+/**
+ * purpose:
+ */
 class player{
      constructor(){
          this.arr=[];

@@ -1,31 +1,37 @@
+/**
+ * purpose:maintain DateTime of the transaction in a Queue implemented using LinkedList 
+ *         to indicate when the transactions were done.
+ * @description
+ * @file       :  companyQueue.js
+ * @author     :  Sachin chouksey
+ * @version    :  1.0
+ * @since      :  8-01-19
+ */
 var utility = require('./queue.js')
 var prompt = require('readline-sync');
-var util=require('../Object Oriented Programs/Utility');
+var util = require('../Object Oriented Programs/Utility');
 var q = new utility();
 
 var d = new Date();
+//stockAccount class
 class StockAccount {
-
+    //for buy the stock
     buy() {
-          var flag=true;
+        var flag = true;
         var num = prompt.question('enter number of stocks to be purchased..... ');
-        while(flag){
-            if(!isNaN(num)){
-             flag=false;
-            }else{
-               num = prompt.question('Wrong input!! enter number of stocks to be purchased..... ')
+        while (flag) {
+            if (!isNaN(num)) {
+                flag = false;
+            } else {
+                num = prompt.question('Wrong input!! enter number of stocks to be purchased..... ')
             }
         }
-
         for (let i = 0; i < num; i++) {
-
             var name = util.inStockName();
-        var number = util.inNoOfShare();
-        var price = util.inSharePrice();
-            var date = (d.getDate() + '-' + d.getMonth() + '-' + d.getFullYear())
-            var time = (d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds())
-
-
+            var number = util.inNoOfShare();
+            var price = util.inSharePrice();
+            var date = (d.getDate() + '-' + d.getMonth() + '-' + d.getFullYear());
+            var time = (d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds());
             let user = {
                 name: name,
                 number: number,
@@ -35,35 +41,36 @@ class StockAccount {
             };
 
             console.log('Successfully purchased the stock on ' + d.getDate() + '-' + d.getMonth() + '-' + d.getFullYear() + ' at ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds());
-
-            q.enqueue(user)
+            //put into the queue
+            q.enqueue(user);
         }
     }
-
+    //for sell the stock
     sell() {
-        var flag=true;
-        var num = prompt.question('enter number of stocks to be purchased..... ');
-        while(flag){
-            if(!isNaN(num)){
-             flag=false;
-            }else{
-               num = prompt.question('Wrong input!! enter number of stocks to be purchased..... ')
+        var flag = true;
+        var num = prompt.question('enter number of stocks to be sell..... ');
+        while (flag) {
+            if (!isNaN(num)) {
+                flag = false;
+            } else {
+                num = prompt.question('Wrong input!! enter number of stocks to be sell..... ')
             }
         }
-        var res=-1;
+        var res = -1;
         for (let i = 0; i < num; i++) {
-
-        res = q.dequeue();
-         if(res!=-1)
-            console.log("Selled stock is ");
-            console.log(res);
+            //delete from queue
+            res = q.dequeue();
+            if (res != -1)
+                console.log("Selled stock is ");
+            console.log(res);//print the deque data
         }
     }
+    //for printing the queue
     stockList() {
         q.printQ();
     }
 }
-
+//creating the object of account class
 var stock = new StockAccount();
 while (1) {
     console.log('1.Buy Stocks')
@@ -72,7 +79,7 @@ while (1) {
     console.log('4.Exit')
     var choice = prompt.question('What do u want to do ?')
     switch (choice) {
-        case '1': 
+        case '1':
             stock.buy();
             break;
         case '2':
@@ -89,12 +96,5 @@ while (1) {
             break;
     }
 }
-
-// var count = prompt.question("enter the number of stocks to be purchased: ");
-// stock.buy(count);
-
-
-// var count = prompt.question("enter the number of stocks to be sold: ");
-// stock.sell(count)
 
 stock.stockList();

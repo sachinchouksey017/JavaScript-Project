@@ -1,5 +1,14 @@
-var EX = {};
+/**
+ * purpose :maintain the Stock Purchased or Sold in a Stack implemented using Linked List
+ *          to indicate transactions done.
+ * @description
+ * @file       :  companyStack.js
+ * @author     :  Sachin chouksey
+ * @version    :  1.0
+ * @since      :  8-01-19
+ */
 
+var EX = {};
 /*
  * Linked List node with item object and next pointer to another node
  */
@@ -102,7 +111,7 @@ EX.LinkedStack = function () {
 
 var stack = new EX.LinkedStack();
 class StockAccount {
-
+//method for buy the stock
 buy()
 {   var flag=true;
     var util=require('../Object Oriented Programs/Utility');
@@ -131,6 +140,7 @@ buy()
         console.log("Purchase Time : " + time);
     }
 }
+//method for sell the stock
 sell()
 { var flag=true;
     var prompt = require('readline-sync');
@@ -150,6 +160,7 @@ sell()
     var time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
     console.log("Stock sold time : " + time);
 }
+//print the stock
 stockReport() 
 {
     stack.printStack();
@@ -158,11 +169,11 @@ stockReport()
 var prompt=require('readline-sync');
 var c=new StockAccount();
 while (1) {
-    console.log('1.Buy Stocks')
-    console.log('2.Sell Stocks')
-    console.log('3.Print Stock list')
-    console.log('4.Exit')
-    var choice = prompt.question('What do u want to do ?')
+    console.log('1.Buy Stocks');
+    console.log('2.Sell Stocks');
+    console.log('3.Print Stock list');
+    console.log('4.Exit');
+    var choice = prompt.question('What do u want to do ?');
     switch (choice) {
         case '1': 
         c.buy();
@@ -177,11 +188,11 @@ while (1) {
 
         case '4': process.exit()
 
-        default: console.log('No Such Option ')
+        default: console.log('No Such Option ');
             break;
     }
 }
-//var prompt = require('prompt-sync')();
+
 
 
 

@@ -35,12 +35,15 @@
             "Name": "dr.Mohit",
             "Specialization": "XYZ",
             "Availability": "AM"
+        },
+        {
+            "Id": "D7",
+            "Name": "dr.sandeep",
+            "Specialization": "abc",
+            "Availability": "BOTH"
         }
     ],
     "Patient": [
-        {
-            
-        },
         {
             "Name": "Pandey ji",
             "ID": "P2",
@@ -59,9 +62,6 @@
             "MobileNumber": 9994534214,
             "Age": 45
         }
-    ],
-    "useClinique": [
-        {}
     ],
     "DrAppointment": [
         {
@@ -89,7 +89,8 @@
                     "9/1/2019": [
                         "P3",
                         "P5",
-                        "P1"
+                        "P1",
+                        "P4"
                     ]
                 }
             ]
@@ -139,6 +140,16 @@
                 },
                 {
                     "8/1/2019": [
+                        "P5"
+                    ]
+                }
+            ]
+        },
+        {
+            "ID": "D7",
+            "AppointmentTaken": [
+                {
+                    "9/1/2019": [
                         "P5"
                     ]
                 }

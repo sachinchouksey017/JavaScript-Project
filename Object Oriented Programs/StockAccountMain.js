@@ -1,10 +1,23 @@
+/**
+ * purpose     :  A program  used by a financial institution to keep track of customer information
+ *                in this we can buy stock or sell the stock.
+ *             
+ * @description
+ * @file       :  StockAccountMain.js
+ * @author     :  Sachin chouksey
+ * @version    :  1.0
+ * @since      :  7-01-19
+ * 
+ */
+//require the file
 var stk=require('../Object Oriented Programs/StockAccount');
+//create object of stock account
 var st = new stk.StockAccount('stockaccount.json');
 var read=require('readline-sync');
 var val,flag1=true;
-while(flag1){
-console.log("What you want \n For Buy the Stock press 1 \n For Sell the Stock press 2 ");
-val = read.question(" For ValueOf press 3 \n For Show Report press 4 \n For Save Report press 5 \n Exit press 6 ");
+while(flag1){//for validating
+console.log("What you want \n 1.Buy the Stock \n 2.Sell the Stock");
+val = read.question(" 3.ValueOf \n 4.Show Report\n 5.Save Report\n 6.Exit ");
 switch (Number(val)) {
     case 1:
         st.buy();

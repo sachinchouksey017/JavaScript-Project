@@ -9,6 +9,7 @@ module.exports = {
 
     inventory(object) {
         //converting every string inventory to object
+        try{
         var rice = object.Rice;
         var wheats = object.Wheats;
         var pulse = object.Pulse;
@@ -18,7 +19,6 @@ module.exports = {
             //total price for rice
             console.log("Total price for  " + rice[key].name + " is " + rice[key].price * rice[key].weight);
         }
-
         for (key in wheats) {
             console.log("\n");
             console.log(wheats[key]);//printing the inventory object by using key 
@@ -31,10 +31,13 @@ module.exports = {
             //total price for pulse;
             console.log("Total price for  " + pulse[key].name + " is " + pulse[key].price * pulse[key].weight);
         }
+    }catch(err){
+        console.log("Error in inventory ");
+    }
 
     },
     /**
-     * purpose     :  Read the Json file and replace the words from file using regex and display it.
+     * purpose  :  Read the Json file and replace the words from file using regex and display it.
      * @param {string} name 
      * @param {string} fullname 
      * @param {number} mobilenumber 
@@ -53,9 +56,6 @@ module.exports = {
         } catch (err) {
             console.log("Error !!!");
         }
-
-
-
     },
     /**
      * purpose     :  Read the Json file having properties Details for stock with properties
@@ -64,8 +64,21 @@ module.exports = {
      * @param {JSON object} obj 
      */
     stock(obj) {
+      var flag=true;
         var stk = obj.stock;
         console.log();
+      var n=read.question("how many stock you want to enter ");
+      while(flag){
+          if(!isNaN(n)){
+            flag=false;
+          }else{
+            n=read.question("wrong input !!! how many stock you want to enter ");
+          }
+      }
+      for (let i = 0; i < n; i++) {
+         this.addStock(obj);
+          
+      }
         for (var key in stk) {//printing the total value for each stock
             console.log(stk[key]);
             console.log("total value for " + stk[key].stockname + " is " + stk[key].No_of_shares * stk[key].share_price);
@@ -78,6 +91,9 @@ module.exports = {
 
         //console.log(stk[]);
     },
+    /**
+     * purpose: Taking stock name as input and validate it. 
+     */
     inStockName() {
         var name = read.question("Enter the name of stock ");
         var flag = true;
@@ -91,6 +107,9 @@ module.exports = {
         }
         return name;
     },
+     /**
+     * purpose: Taking stock No as input and validate it. 
+     */
     inNoOfShare() {
         var flag = true;
         var Noofshares = read.question("Enter how many shares you have ");
@@ -104,6 +123,9 @@ module.exports = {
         }
         return Noofshares;
     },
+     /**
+     * purpose: Taking stock Price as input and validate it. 
+     */
     inSharePrice() {
         var flag = true;
         var shareprice = read.question(" Enter the price of your share ");
@@ -117,12 +139,14 @@ module.exports = {
         }
         return shareprice;
     },
-
+     /**
+     * purpose: To add the stock data to stock object. 
+     */
     addStock(object) {
         var stockobj = object.stock;
         var stkname = this.inStockName();
-        var stkNoofshare = this.inNoOfShare();
-        var stksharePrice = this.inSharePrice();
+        var stkNoofshare = parseInt(this.inNoOfShare());
+        var stksharePrice = parseInt(this.inSharePrice());
         stockobj.push({
             stockname: stkname,
             No_of_shares: stkNoofshare,
@@ -131,6 +155,11 @@ module.exports = {
         console.log(object);
 
     },
+    /**
+     * purpose:To Edit the stock data from object
+     * @param {*} object 
+     * @param {*} file 
+     */
     editStock(object, file) {
         var val = -1;
         var stockobj = object.stock;
@@ -168,10 +197,15 @@ module.exports = {
 
         }
     },
+    /**
+     * purpose: To delete the data from stock object.
+     * @param {*} object 
+     */
     deleteStock(object) {
         var stockobj = object.stock;
         var name = this.inStockName();
         var val = -1;
+        //searching the data from object
         for (key in stockobj) {
             if (stockobj[key].stockname == name) {
                 val = key;
@@ -192,17 +226,22 @@ module.exports = {
             console.log("wrong input ");
             return;
         }
-
-
-
-
     },
+    /**
+     * purpose: To display the Stock object
+     * @param {*} object 
+     */
     displayStock(object) {
         var stockobj = object.stock;
         for (var key in stockobj) {
             console.log(stockobj[key]);
         }
     },
+    /**
+     * purpose:To Save the object to file
+     * @param {*} object 
+     * @param {*} file 
+     */
     saveStock(object, file) {
         try {
             file.writeFileSync('inventorymanage.json', JSON.stringify(object));
@@ -222,8 +261,6 @@ module.exports = {
     inventoryManage(object, file) {
 
         var key = Number(read.question("1.Add Stock\n2.Edit Stock\n3.Delete Stock\n4.Display\n5.Save into file\n6.Exit  "));
-
-
         switch (key) {
             case 1:
                 this.addStock(object);
@@ -242,7 +279,6 @@ module.exports = {
                 return this.inventoryManage(object, file);
             case 6:
                 break;
-                return;
             default:
                 console.log("Wrong Input  ");
                 return this.inventoryManage(object, file);
@@ -261,7 +297,7 @@ module.exports = {
         for (let i = 0; i < suit.length; i++) {//adding of all 52 cards in array
 
             for (let j = 0; j < rank.length; j++) {
-                cards.push("" + suit[i] + rank[j]);
+                cards.push("" + rank[j]+ suit[i] );
 
             }
 
@@ -303,45 +339,51 @@ module.exports = {
 
 
     },
+    /**
+     * purpose:create a Player Object having Deck of Cards, and having ability to Sort 
+     *         by Rank and maintain the cards in a Queue implemented using Linked List.
+     * @returns:nothing
+     */
     deckExtend() {
         var que = require('../DataStructurePrograms/QueueUsingLinkedList');
+        //requiring the player class 
         var playerClass = require('../Object Oriented Programs/Player');
         var cards = this.giveCards();//array containing of cards
-        var p = new playerClass.player;
+        var p = new playerClass.player;//object for player class
         var num = read.question("How many player want to play ");
         if (isNaN(num)) {
             console.log("Please enter correct inputs ");
             return;
         }
         for (let i = 0; i < num; i++) {
-            p.addplayer();//add players
+            p.addplayer();//add players in game
 
         } var playerNum = 0;
+        //distributing the cards in players
         for (let index = 0; index < cards.length; index++) {
             playerNum = (index % num) + 1;
-            p.addCards(playerNum, cards[index]);
+            p.addCards(playerNum, cards[index]);//give the card one by one to players
 
         }
         console.log("After sorting the card ");
         for (let index = 0; index < num; index++) {
             console.log();
+            //for sorting the cards
             p.sort(index + 1);
             console.log("Player " + (index + 1) + " card is ");
             p.displayCards(index + 1);
 
         }
-
-
-
-
-
-    },
+    },/**
+     * purpose:for search the doctor name in file 
+     * @param {*} object 
+     * @param {*} file 
+     */
     drname(object, file) {
         var drobject = object.Doctor;
         var flag = true;
-
         var name = read.question("Please enter the Doctor name ");
-        while (flag) {
+        while (flag) {//validating
             if (isNaN(name)) {
                 flag = false;
             } else {
@@ -349,10 +391,11 @@ module.exports = {
             }
         }
         flag = true;
-        for (key in drobject) {
+        for (key in drobject) {//search the name
             if (drobject[key].Name == name) {
                 console.log(drobject[key]);
                 flag = false;
+                //appointment method to take appointment from user
                 var fix = this.drAppointment(object, file);
 
                 if (fix != undefined) {
@@ -462,34 +505,55 @@ module.exports = {
             console.log("No Dr. Available search another doctor")
         }
     },
+    /**
+     * purpose:To check the Date is available in json or not if not available the push it.
+     * @param {*} appoinobject 
+     * @param {*} key 
+     * @param {*} Obj 
+     * @param {*} file 
+     * @param {*} str 
+     */
     appoinmentSearch(appoinobject, key, Obj, file, str) {
-
         for (key1 in appoinobject[key].AppointmentTaken) {
+            //for matching the key or date available
             if (appoinobject[key].AppointmentTaken[key1][str] !== undefined) {
-                // appoinobject[key].AppointmentTaken.push({
-                //     [str]: []
-                // });
-                // file.writeFileSync('Clinique.json', JSON.stringify(Obj));
                 return true;
             }
         }
         return false;
     },
+    /**
+     * purpose:To check the doctor have slots or not for the date .
+     * @param {*} key 
+     * @param {*} appoinobject 
+     * @param {*} object 
+     * @param {*} file 
+     * @param {*} str 
+     * @param {*} patId 
+     * @param {*} date 
+     */
     appointLength(key, appoinobject, object, file, str, patId, date) {
+        //for search the date is available or not given in form of str.
         var add = this.appoinmentSearch(appoinobject, key, object, file, str);
+        //if not available then add or push it
         if (!add) {
             appoinobject[key].AppointmentTaken.push({
                 [str]: []
             });
             file.writeFileSync('Clinique.json', JSON.stringify(object));
         }
+        //traverse the appointment object.
         for (key1 in appoinobject[key].AppointmentTaken) {
+            //for matching only with defined data
             if (appoinobject[key].AppointmentTaken[key1][str] !== undefined) {
-                if (appoinobject[key].AppointmentTaken[key1][str].length < 5) {
+                //for check list contain less than  5 patient or not.
+                   if (appoinobject[key].AppointmentTaken[key1][str].length < 5) {
+                       //if less then 5 patient then add patient to doctor appointment list
                     appoinobject[key].AppointmentTaken[key1][str].push(patId);
                     file.writeFileSync('Clinique.json', JSON.stringify(object));
                     return str;
                 } else {
+                    //if not 
                     date = date + 1;
                     str = (date) + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear();
                     return this.appointLength(key, appoinobject, object, file, str, patId, date);
@@ -497,24 +561,30 @@ module.exports = {
                 }
             }
         }
-    },
+    },/**
+     * purpose: To take appointment from doctor.
+     * @param {*} object 
+     * @param {*} file 
+     */
     drAppointment(object, file) {
+        //creating appointment object.
         var appoinobject = object.DrAppointment;
         var val = Number(read.question(" For Appointment press 1 \n For Exit press 2 "));
         var date = dt.getDate();
+        //generating date and time.
         var str = dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear();
-
         if (val == 1) {
             var id = read.question("Please enter the Doctor Id ");
             for (key in appoinobject) {
+                //search for doctor Id
                 if (appoinobject[key].ID == id) {
                     var patId = read.question("Please enter patient Id ");
+                    //method for search appointment is available or not.passing the date as argument
                     var val = this.appointLength(key, appoinobject, object, file, str, patId, date);
-
                     return val;
-
                 }
             }
+            //for exit.
         } else if (val == 2) {
             return undefined;
         } else {
@@ -600,13 +670,14 @@ module.exports = {
             Availability: Avail
 
         });
+        var appointobject=object.DrAppointment;
+        var appoint= {"ID": id,
+        "AppointmentTaken": []
+    }
+    appointobject.push(appoint);
         file.writeFileSync('Clinique.json', JSON.stringify(object));
     },
     RegisterPatient(object) {
-        // "Name": "Honey pandey",
-        // "ID": "P1",
-        // "MobileNumber": 8878257808,
-        // "Age": 24
         var name = read.question("Enter the Name of Patient ");
         var flag = true;
         while (flag) {
@@ -716,27 +787,22 @@ module.exports = {
     clinique(object, file) {
         var choice = read.question("What You want \n Press 1 for Search doctor \n Press 2 for Search patient \n press 3 for Register Doctor \n"
             + " Press 4 for Register Patient \n Press 5 for to Show All Doctor \n press 6 for Save File \n press 7 for Exit ");
-        if (choice == 1) {
+       //run if according to user choice.
+            if (choice == 1) {
             var drchoice = Number(read.question("Search by : \n 1.Name \n 2.ID \n 3.Specialization \n 4.Availability \n 5.Exit "));
             switch (drchoice) {
                 case 1:
+                //search by name
                     this.drname(object, file);
-
                     break;
                 case 2:
                     this.drId(object, file);
-
-
                     break;
                 case 3:
                     this.drSpecialization(object, file);
-
-
                     break;
                 case 4:
                     this.drAvail(object, file);
-
-
                     break;
                 case 5:
                     break;
@@ -745,20 +811,18 @@ module.exports = {
                     return this.clinique(object, file);
             }
         } else if (choice == 2) {
+            //for search the patient ask user to choice
             var patchoice = Number(read.question("Search by : \n 1.Name \n 2.Mobile Number \n 3.Id  \n 4.Exit "));
             switch (patchoice) {
                 case 1:
                     this.patname(object);
                     return this.clinique(object, file);
-
                 case 2:
                     this.patmob(object);
                     return this.clinique(object, file);
-
                 case 3:
                     this.patId(object);
                     return this.clinique(object, file);
-
                 case 4:
                     break;
                 default:
@@ -767,23 +831,19 @@ module.exports = {
 
             }
 
-        } else if (choice == 3) {
+        } else if (choice == 3) {//for register the doctor.
             this.RegisterDr(object, file);
-            this.clinique(object, file);
-
-        } else if (choice == 4) {
+            this.clinique(object, file);//recursively call the method itsel
+        } else if (choice == 4) {//register the patient
             this.RegisterPatient(object);
             this.clinique(object, file);
-
-        } else if (choice == 5) {
+        } else if (choice == 5) {//for show all the data
             this.showAllDr(object);
             this.clinique(object, file);
-
-        } else if (choice == 6) {
+        } else if (choice == 6) {//for save the file
             file.writeFileSync('Clinique.json', JSON.stringify(object));
             console.log("File Saved Successfully ");
             return this.clinique(object, file);
-
         } else if (choice == 7) {
             return;
         } else {
@@ -864,11 +924,16 @@ module.exports = {
         }
         return Code;
     },
-
-
+/**
+ * purpose: To Add the person to object.
+ * @param {*} object 
+ */
     addperson(object) {
         var id = 0;
+        //creating object
+        try{
         var personobj = object.Person;
+        //taking inputs by user using  methods
         var fname = this.pFNameInput();
         var lname = this.pLNameInput();
         var address = this.pAddressInput();
@@ -878,6 +943,7 @@ module.exports = {
         for (var key in personobj) {
             id++;
         }
+        //generating id for new user
         var id1 = personobj[id - 1].ID;
         personobj.push({
             "Firstname": fname,
@@ -888,32 +954,44 @@ module.exports = {
             "ID": id1,
             "Mobile": mob
         });
+    }catch(err){
+        console.log("error in add person");
+    }
     },
+    /**
+     * purpose:To edit the person data from address book
+     * @param {*} object 
+     */
     editPerson(object) {
         var permanent = -1;
         var personobj = object.Person;
         var name = this.pFNameInput();
         var mob = this.pMobInput();
+        //for taking the object key value
         for (var key in personobj) {
             if (personobj[key].Firstname == name && personobj[key].Mobile == mob) {
                 permanent = key;
-                console.log(key);
             }
         }
-        console.log(permanent);
+       // console.log(permanent);
         if (permanent == -1) {
             console.log("No user  Detail is Found");
+            return;
         }
         console.log("The Person Detail is ");
         var value;
         console.log(personobj[permanent]);
-        var ch = Number(read.question('\n 1. Edit FirstName.  \n 2. Edit LastName.  \n 3.Edit Address.  \n 4. Edit State. \n 5. Edit Zip.  \n 6. Edit Phone.  '));
+        //asking from user which he want to edit
+        var ch = Number(read.question('\n 1. Edit FirstName.  \n 2. Edit LastName.  \n 3. Edit Address.  \n 4. Edit State. \n 5. Edit Zip.  \n 6. Edit Phone.  '));
+      //taking input accordingly
         switch (ch) {
             case 1:
+            //replace the old first name with new first name
                 value = this.pFNameInput();
                 personobj[permanent].Firstname = value;
                 break;
             case 2:
+            //replace the old last name with new last name
                 value = this.pLNameInput();
                 personobj[permanent].LastName = value;
                 break;
@@ -942,11 +1020,17 @@ module.exports = {
 
 
     },
+    /**
+     * purpose : For delete the person from address book.
+     * @param {*} object 
+     * @param {*} file 
+     */
     deletePerson(object, file) {
         var permanent = -1;
         var personobj = object.Person;
         var name = this.pFNameInput();
         var mob = this.pMobInput();
+        //taking key of object
         for (var key in personobj) {
             if (personobj[key].Firstname == name && personobj[key].Mobile == mob) {
                 permanent = key;
@@ -954,23 +1038,33 @@ module.exports = {
         }
         if (permanent == -1) {
             console.log("No user  Detail is Found");
+            return;
         }
         console.log("The Person Detail is ");
-        var value;
+    //Print the person detail
         console.log(personobj[permanent]);
         var ch = read.question("Are You Sure \n1.Delete. \n2.Exit ");
         if (ch == 1) {
-            delete personobj[permanent];
-            //  file.writeFileSync('Address.json',JSON.stringify(object));
+            personobj.splice(permanent,1);
+            //delete personobj[permanent];
+           
 
         } else {
             return;
         }
 
-    },
+    },/**
+     * purpose:To save the file
+     * @param {*} object 
+     * @param {*} file 
+     */
     saveFile(object, file) {
         file.writeFileSync('Address.json', JSON.stringify(object));
     },
+    /**
+     * purpose:To display the all person data
+     * @param {*} object 
+     */
     displayPerson(object) {
         var personobj = object.Person;
         for (var key in personobj) {
@@ -979,11 +1073,14 @@ module.exports = {
             }
         }
 
-    },
+    },/**
+     * purpose: to sort the object by its name.
+     * @param {*} object 
+     */
     sortbyname(object) {
         var personobj = object.Person;
         personobj.sort(function (a, b) {
-            //return a.attributes.OBJECTID - b.attributes.OBJECTID;
+            //comparing the name
             if (a.Firstname == b.Firstname)
                 return 0;
             if (a.Firstname < b.Firstname)
@@ -993,6 +1090,10 @@ module.exports = {
         });
         console.log(personobj);
     },
+    /**
+     * purpose:To sort the object by its pincode.
+     * @param {*} object 
+     */
     sortbyzip(object) {
         var personobj = object.Person;
         personobj.sort(function (a, b) {
@@ -1001,10 +1102,17 @@ module.exports = {
         });
         console.log(personobj);
     },
-
+/**
+ * purpose: In this method we ask from user what he want add person or edit or display call 
+ *          method accordingly.
+ * @param {*} object 
+ * @param {*} file 
+ * 
+ */
     addressMain(object, file) {
 
         var key = Number(read.question("1.Add Person\n2.Edit Person\n3.Delete Person\n4.Sort By Name\n5.Sort by Zip\n6.Display\n7.Save into file\n8.Exit  "));
+       //calling the method as user user input
         switch (key) {
             case 1:
                 this.addperson(object);
@@ -1036,17 +1144,22 @@ module.exports = {
         }
 
     },
+    /**
+     * purpsoe:To display the stock from linked list.
+     * @param {*} Linked 
+     */
     displaystockLL(Linked){
         var arr=[];
         var curr=Linked.head;
         while(curr){
+            //taking the data from linked list and print it
            arr.push(curr.element);
             curr=curr.next;
         }
         console.log(arr);
         return arr;
     },
-    
+    //for taking the stock id as input. from user
     stockid(object,Linked){
        var flag=true;
        var id=Number(read.question('Enter the id '));
@@ -1059,35 +1172,29 @@ module.exports = {
        }
       var curr=Linked.head;
       while(curr){
+    //searching the Id if already present in linked list then take again input as id recursively
         if(parseInt(curr.element.Id)===id){
             console.log("The Stock Id is matching ");
             return this.stockid(object,Linked);
         }
         curr=curr.next;
       }
-
-
-
-    //    for(key in object.stock){
-      
-      
-    //        if(parseInt(object.stock[key].Id)===id){
-    //            console.log("this id is already present enter another");
-    //            return this.stockid(object);
-    //        }
-    //    }
        return id;
 
     },
+    /**
+     * purpose :Add the object to linked list.
+     * @param {*} object 
+     * @param {*} Linked 
+     */
     addStockLL(object,Linked) {
-        var stockobj = object.stock;
+        //taking the input from user
         var stkname = this.inStockName();
         var stkNoofshare = parseInt(this.inNoOfShare());
         var stksharePrice = parseInt(this.inSharePrice());
        // var l=object.stock.length-1;
       var id=parseInt(this.stockid(object,Linked));
-      
-
+      //creating the data object
      var ob=   {
            Id:id,
             stockname: stkname,
@@ -1095,15 +1202,6 @@ module.exports = {
             share_price: stksharePrice
         }
         Linked.add(ob);
-       //console.log(this.displaystockLL(Linked));
-       
-        // stockobj.push({
-        //     stockname: stkname,
-        //     No_of_shares: stkNoofshare,
-        //     share_price: stksharePrice
-        // });
-        //console.log(object);
-
     },
    
     inputid(){
@@ -1118,6 +1216,11 @@ module.exports = {
         }
         return id;
     },
+    /**
+     * purpose: To delete the stock from linked list.
+     * @param {*} object 
+     * @param {*} Linked 
+     */
     deleteStockLL(object,Linked) {
         var stockobj = object.stock;
         var n=0;
@@ -1126,6 +1229,7 @@ module.exports = {
 
       while(curr){
           n++;
+          //search for id
           if(curr.element.Id===id){
               Linked.popIndex(n);
               return;
@@ -1134,40 +1238,12 @@ module.exports = {
       }
       console.log("Id Not found");
 
-
-        // var val = -1;
-        // for (key in stockobj) {
-        //     if (stockobj[key].Id == id&&stockobj[key].stockname == name) {
-        //         val = key;
-        //     }
-        // }
-        // if (val == -1) {
-        //     console.log("No record found ");
-
-        // }
-        // console.log(stockobj[val]);
-        // var ch = read.question("Are You Sure \n1.Delete. \n2.Exit ");
-        // if (ch == 1) {
-        //     stockobj.splice(val, 1);
-        //     console.log(stockobj);
-        //     // file.writeFileSync('Address.json',JSON.stringify(object));
-
-        // } else {
-        //     console.log("wrong input ");
-        //     return;
-        // }
-
-
-
-
     },
-    displayStockLL(object,Linked) {
-        //console.log(this.displaystockLL(Linked));
-        // var stockobj = object.stock;
-        // for (var key in stockobj) {
-        //     console.log(stockobj[key]);
-        // }
-    },
+    /**
+     * purpose: To save the data from linkedlist to file
+     * @param {*} file 
+     * @param {*} Linked 
+     */
     saveStockLL(file,Linked) {
         var arr=new Array();
         var curr=Linked.head;
@@ -1175,32 +1251,45 @@ module.exports = {
             arr.push(curr.element);
             curr=curr.next;
         }
-        
+        var arrobj={
+            "stock":arr
+        }
         try {
-            file.writeFileSync('StockLL.json', JSON.stringify(arr));
+            file.writeFileSync('StockLL.json', JSON.stringify(arrobj));
         } catch (err) {
             console.log("error in file");
         }
         console.log("file save successfully ");
     },
+    /**
+     * purpose     :  A program  used by a financial institution to keep track of customer information
+     *                in this we can buy stock or sell the stock.using linked list
+     * @param {*} file 
+     * @param {*} object 
+     * @param {*} Linked 
+     */
     stockLinkedList(file,object,Linked) {
         
         var ch = Number(read.question("1.ADD Stock\n2.Remove Stock\n3.Display Stock\n4.Save File\n5.Exit  "));
         
         switch (ch) {
             case 1:
-                this.addStockLL(object,Linked);
-                return this.stockLinkedList(file,object,Linked);
+                this.addStockLL(object,Linked);// add stock method
+                return this.stockLinkedList(file,object,Linked);//reccursively call method itself.
             case 2:
+            //delete the stock
                 this.deleteStockLL(object,Linked);
                 return this.stockLinkedList(file,object,Linked);
             case 3:
+            //display the stock
                 this.displaystockLL(Linked);
                 return this.stockLinkedList(file,object,Linked);
             case 4:
+            //save the stock to file.
                 this.saveStockLL(file,Linked);
                 return this.stockLinkedList(file,object,Linked);
             case 5:
+            //for exit
                 return;
             default:
                  console.log("wrong Input");

@@ -32,7 +32,7 @@
         {
             "name": "mungDal",
             "price": "140",
-            "weight": "10"
+            "weight": 10
         }
     ]
 }
