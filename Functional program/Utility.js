@@ -99,12 +99,15 @@ module.exports = {
   leapYear(year) {
     if (year < 999 || year > 10000) {
       console.log("Enter 4 digit year number");
+      return false;
     } else {
 
       if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
         console.log("Year is leap year");
+        return true;
       } else {
         console.log("Year is not a leap year");
+        return false;
       }
     }
   },
@@ -382,7 +385,6 @@ module.exports = {
         if (arr[index] == n) {
           flag = false;
         }
-
       }
       if (flag == true) {
         arr[h++] = n;
