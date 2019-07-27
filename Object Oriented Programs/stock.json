@@ -1,0 +1,19 @@
+{
+    "stock": [
+        {
+            "stockname": "Reliance",
+            "No_of_shares": 500,
+            "share_price": 1200
+        },
+        {
+            "stockname": "BridgeLabz",
+            "No_of_shares": 100,
+            "share_price": 700
+        },
+        {
+            "stockname": "infosys",
+            "No_of_shares": 900,
+            "share_price": 2000
+        }
+    ]
+}

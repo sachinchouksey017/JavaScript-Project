@@ -1,0 +1,40 @@
+{
+    "stock": [
+        {
+            "Id": 1,
+            "stockname": "Reliance",
+            "No_of_shares": 500,
+            "share_price": 1200
+        },
+        {
+            "Id": 3,
+            "stockname": "infosys",
+            "No_of_shares": 900,
+            "share_price": 2000
+        },
+        {
+            "Id": 4,
+            "stockname": "sachin",
+            "No_of_shares": 100,
+            "share_price": 10
+        },
+        {
+            "Id": 5,
+            "stockname": "tata",
+            "No_of_shares": 100,
+            "share_price": 100
+        },
+        {
+            "Id": 6,
+            "stockname": "tata",
+            "No_of_shares": 100,
+            "share_price": 100
+        },
+        {
+            "Id": 7,
+            "stockname": "tata",
+            "No_of_shares": 2,
+            "share_price": 2
+        }
+    ]
+}

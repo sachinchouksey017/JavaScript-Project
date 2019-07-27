@@ -1,0 +1,159 @@
+{
+    "Doctor": [
+        {
+            "Id": "D1",
+            "Name": "dr.Ansari",
+            "Specialization": "Neurologist",
+            "Availability": "BOTH"
+        },
+        {
+            "Id": "D2",
+            "Name": "dr.Akshay",
+            "Specialization": "Psychiatrist",
+            "Availability": "BOTH"
+        },
+        {
+            "Id": "D3",
+            "Name": "dr.Mohit Kumar",
+            "Specialization": "Pediatrician",
+            "Availability": "PM"
+        },
+        {
+            "Id": "D4",
+            "Name": "dr.Sandeep Kumar",
+            "Specialization": "Neurologist",
+            "Availability": "AM"
+        },
+        {
+            "Id": "D5",
+            "Name": "dr.Nagendra",
+            "Specialization": "ABC",
+            "Availability": "BOTH"
+        },
+        {
+            "Id": "D6",
+            "Name": "dr.Mohit",
+            "Specialization": "XYZ",
+            "Availability": "AM"
+        },
+        {
+            "Id": "D7",
+            "Name": "dr.sandeep",
+            "Specialization": "abc",
+            "Availability": "BOTH"
+        }
+    ],
+    "Patient": [
+        {
+            "Name": "Pandey ji",
+            "ID": "P2",
+            "MobileNumber": 9872257408,
+            "Age": 48
+        },
+        {
+            "Name": "Ashok Kumar",
+            "ID": "P3",
+            "MobileNumber": 9893345623,
+            "Age": 60
+        },
+        {
+            "Name": "aslam",
+            "ID": "P4",
+            "MobileNumber": 9994534214,
+            "Age": 45
+        }
+    ],
+    "DrAppointment": [
+        {
+            "ID": "D1",
+            "AppointmentTaken": [
+                {
+                    "7/1/2019": [
+                        1,
+                        2,
+                        "p1",
+                        3,
+                        4
+                    ]
+                },
+                {
+                    "8/1/2019": [
+                        1,
+                        "P2",
+                        "P2",
+                        "h",
+                        "P3"
+                    ]
+                },
+                {
+                    "9/1/2019": [
+                        "P3",
+                        "P5",
+                        "P1",
+                        "P4"
+                    ]
+                }
+            ]
+        },
+        {
+            "ID": "D2",
+            "AppointmentTaken": [
+                {
+                    "7/1/2019": [
+                        1,
+                        2,
+                        "P3",
+                        "P3",
+                        "P4"
+                    ]
+                },
+                {
+                    "8/1/2019": [
+                        "P4",
+                        "P5"
+                    ]
+                }
+            ]
+        },
+        {
+            "ID": "D3",
+            "AppointmentTaken": [
+                {
+                    "7/1/2019": [
+                        1,
+                        2
+                    ]
+                }
+            ]
+        },
+        {
+            "ID": "D4",
+            "AppointmentTaken": [
+                {
+                    "7/1/2019": [
+                        1,
+                        2,
+                        "P5",
+                        "P4",
+                        "P3"
+                    ]
+                },
+                {
+                    "8/1/2019": [
+                        "P5"
+                    ]
+                }
+            ]
+        },
+        {
+            "ID": "D7",
+            "AppointmentTaken": [
+                {
+                    "9/1/2019": [
+                        "P5"
+                    ]
+                }
+            ]
+        }
+    ]
+}

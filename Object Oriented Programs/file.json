@@ -1,0 +1,38 @@
+{
+    "Rice": [
+        {
+            "name": "Basmati",
+            "price": 60,
+            "weight": 10
+        },
+        {
+            "name": "IndianRice",
+            "price": 100,
+            "weight": 50
+        }
+    ],
+    "Wheats": [
+        {
+            "name": "ashirvad",
+            "price": 40,
+            "weight": 40
+        },
+        {
+            "name": "specialwheats",
+            "price": 60,
+            "weight": 20
+        }
+    ],
+    "Pulse": [
+        {
+            "name": "tuvarDal",
+            "price": 100,
+            "weight": 56
+        },
+        {
+            "name": "mungDal",
+            "price": "140",
+            "weight": 10
+        }
+    ]
+}
